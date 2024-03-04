@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ChildrenProps } from "types";
+import SearchResults from "./SearchResults";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -8,9 +8,13 @@ const Wrapper = styled.div`
   border: 1px solid #ffffff80;
   background: #ffffff33;
   margin-top: 100px;
-  padding: 20px;
+  padding: 30px 40px;
 `;
 
-export default function SearchHistory({ children }: ChildrenProps) {
-  return <Wrapper>{children}</Wrapper>;
+export default function SearchHistory() {
+  return (
+    <Wrapper>
+      <SearchResults />
+    </Wrapper>
+  );
 }
