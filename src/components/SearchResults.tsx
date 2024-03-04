@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import type { RootState } from "store";
 import { useSelector } from "react-redux";
+import sunImage from "assets/sun.png";
 
 const WeatherContainer = styled.div`
   display: flex;
+  position: relative;
 `;
 
 const WeatherTempContainer = styled.div`
@@ -16,6 +18,14 @@ const AdditionalInfoContainer = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   width: 100%;
+`;
+
+const Image = styled.img`
+  height: 350px;
+  width: 350px;
+  position: absolute;
+  top: -150px;
+  left: 280px;
 `;
 
 const GreyText = styled.p<{ $bold?: boolean }>`
@@ -41,7 +51,7 @@ export default function SearchResults() {
     <WeatherContainer>
       <WeatherTempContainer>
         <p style={{ fontWeight: "bold" }}>Today's Weather</p>
-        <p style={{ fontSize: "60px", fontWeight: "bold", color: "#6C40B5" }}>
+        <p style={{ fontSize: "80px", fontWeight: "bold", color: "#6C40B5" }}>
           {temp}°
         </p>
         <p>
@@ -52,6 +62,7 @@ export default function SearchResults() {
         </GreyText>
       </WeatherTempContainer>
       <AdditionalInfoContainer>
+        <Image src={sunImage} alt="sun" />
         <GreyText>{timestamp}</GreyText>
         <GreyText>Humidity: {humidity}%</GreyText>
         <GreyText>Clouds</GreyText>
