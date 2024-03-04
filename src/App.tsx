@@ -1,13 +1,15 @@
-import { useEffect } from "react";
 import { getWeatherData } from "api";
 import SearchField from "components/SearchField";
 import MainWrapper from "components/MainWrapper";
+import { useQuery } from "@tanstack/react-query";
 
 function App() {
-  useEffect(() => {
-    const weatherData = getWeatherData();
-    console.log(weatherData);
-  }, []);
+  const { data } = useQuery({
+    queryKey: ["weatherData"],
+    queryFn: getWeatherData,
+  });
+  console.log("DATA: ", data);
+
   return (
     <MainWrapper>
       <SearchField />
