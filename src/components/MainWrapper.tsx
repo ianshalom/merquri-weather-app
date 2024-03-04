@@ -6,6 +6,10 @@ const MainWrapper = styled.div`
   padding: 20px 0;
 `;
 
-export default function Wrapper({ children }) {
+interface Props {
+  children: React.ReactNode;
+}
+
+export default function Wrapper({ children }: Props) {
   return <MainWrapper>{children}</MainWrapper>;
 }
