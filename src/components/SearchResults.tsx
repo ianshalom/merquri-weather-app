@@ -2,9 +2,25 @@ import styled from "styled-components";
 import type { RootState } from "store";
 import { useSelector } from "react-redux";
 
-const WeatherData = styled.div`
+const WeatherContainer = styled.div`
+  display: flex;
+`;
+
+const WeatherTempContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const AdditionalInfoContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const GreyText = styled.p<{ $bold?: boolean }>`
+  color: #666666;
+  font-weight: ${(props) => (props.$bold ? "bold" : "none")};
 `;
 
 export default function SearchResults() {
@@ -22,15 +38,24 @@ export default function SearchResults() {
   console.log(timestamp, humidity);
 
   return (
-    <WeatherData>
-      <p style={{ fontWeight: "bold" }}>Today's Weather</p>
-      <h1>{temp}</h1>
-      <p>
-        H:{maxTemp} L:{minTemp}
-      </p>
-      <p>
-        {name}, {country}
-      </p>
-    </WeatherData>
+    <WeatherContainer>
+      <WeatherTempContainer>
+        <p style={{ fontWeight: "bold" }}>Today's Weather</p>
+        <p style={{ fontSize: "60px", fontWeight: "bold", color: "#6C40B5" }}>
+          {temp}°
+        </p>
+        <p>
+          H:{maxTemp}° L:{minTemp}°
+        </p>
+        <GreyText $bold>
+          {name}, {country}
+        </GreyText>
+      </WeatherTempContainer>
+      <AdditionalInfoContainer>
+        <GreyText>{timestamp}</GreyText>
+        <GreyText>Humidity: {humidity}%</GreyText>
+        <GreyText>Clouds</GreyText>
+      </AdditionalInfoContainer>
+    </WeatherContainer>
   );
 }
