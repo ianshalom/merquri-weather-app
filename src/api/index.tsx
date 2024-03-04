@@ -4,8 +4,8 @@ const axiosInstance = axios.create({
   baseURL: "https://api.openweathermap.org/data/2.5/weather",
 });
 
-export const getWeatherData = async () => {
+export const getWeatherData = async (input: string) => {
   return await axiosInstance.get(
-    `?q=london,uk&appid=${import.meta.env.VITE_WEATHER_API_KEY}`
+    `?q=${input}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`
   );
 };

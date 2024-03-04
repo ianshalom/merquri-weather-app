@@ -8,7 +8,10 @@ const StyledInputField = styled.input`
   border: none;
   width: 600px;
 `;
+export interface OnChangeHandlerProps {
+  onChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-export function InputField() {
-  return <StyledInputField placeholder="City" />;
+export function InputField({ onChangeHandler }: OnChangeHandlerProps) {
+  return <StyledInputField placeholder="City" onChange={onChangeHandler} />;
 }

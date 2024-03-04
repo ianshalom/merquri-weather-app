@@ -1,17 +1,27 @@
 import { InputField } from "./UI/InputField";
 import styled from "styled-components";
 import { SearchIcon } from "./Icons/SearchIcon";
+import { OnChangeHandlerProps } from "./UI/InputField";
 
 const InputFieldWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-export default function SearchField() {
+interface HandleClickProps extends OnChangeHandlerProps {
+  handleClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+export default function SearchField({
+  onChangeHandler,
+  handleClick,
+}: HandleClickProps) {
   return (
     <InputFieldWrapper>
-      <InputField />
-      <SearchIcon />
+      <InputField onChangeHandler={onChangeHandler} />
+      <span onClick={handleClick}>
+        <SearchIcon />
+      </span>
     </InputFieldWrapper>
   );
 }
