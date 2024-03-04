@@ -42,6 +42,7 @@ function App() {
     console.log("weatherData: ", weatherData);
 
     dispatch(saveSearchResult(weatherData));
+    setInput("");
   }, [data, dispatch]);
 
   console.log("DATA: ", data);
@@ -51,6 +52,7 @@ function App() {
       <SearchField
         onChangeHandler={onChangeHandler}
         handleClick={handleClick}
+        value={input}
       />
       {isError && <p>No weather data found for {input}....</p>}
       <SearchHistory />

@@ -15,10 +15,11 @@ interface HandleClickProps extends OnChangeHandlerProps {
 export default function SearchField({
   onChangeHandler,
   handleClick,
+  value,
 }: HandleClickProps) {
   return (
     <InputFieldWrapper>
-      <InputField onChangeHandler={onChangeHandler} />
+      <InputField onChangeHandler={onChangeHandler} value={value} />
       <span onClick={handleClick}>
         <SearchPrimaryIcon />
       </span>
