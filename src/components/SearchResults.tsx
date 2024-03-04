@@ -9,15 +9,25 @@ const WeatherData = styled.div`
 
 export default function SearchResults() {
   const weatherData = useSelector(
-    (state: RootState) => state?.searchHistory.weatherData
+    (state: RootState) =>
+      state.searchHistory.weatherData[
+        state.searchHistory.weatherData.length - 1
+      ]
   );
   console.log(weatherData);
+
+  const { temp, maxTemp, minTemp, name, country } = weatherData;
+
   return (
     <WeatherData>
       <p>Today's Weather</p>
-      <p>Temperature</p>
-      <p>H:29deg L:26deg</p>
-      <p>City, Code</p>
+      <h1>{temp}</h1>
+      <p>
+        H:{maxTemp} L:{minTemp}
+      </p>
+      <p>
+        {name}, {country}
+      </p>
     </WeatherData>
   );
 }
