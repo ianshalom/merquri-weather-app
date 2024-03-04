@@ -6,6 +6,6 @@ const axiosInstance = axios.create({
 
 export const getWeatherData = async (input: string) => {
   return await axiosInstance.get(
-    `?q=${input}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`
+    `?q=${input}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=metric`
   );
 };

@@ -3,6 +3,7 @@ import SearchField from "components/SearchField";
 import MainWrapper from "components/MainWrapper";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import SearchHistory from "components/SearchHistory";
 
 function App() {
   const [input, setInput] = useState("");
@@ -31,6 +32,9 @@ function App() {
         handleClick={handleClick}
       />
       {isError && <p>No weather data found for {input}....</p>}
+      <SearchHistory>
+        <h1>Shalom</h1>
+      </SearchHistory>
     </MainWrapper>
   );
 }

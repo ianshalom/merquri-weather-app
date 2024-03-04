@@ -7,6 +7,7 @@ const StyledInputField = styled.input`
   font-size: inherit;
   border: none;
   width: 600px;
+  height: 60px;
 `;
 export interface OnChangeHandlerProps {
   onChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;

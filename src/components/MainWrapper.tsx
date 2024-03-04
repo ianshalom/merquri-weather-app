@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ChildrenProps } from "types";
 
 const MainWrapper = styled.div`
   max-width: 700px;
@@ -6,10 +7,6 @@ const MainWrapper = styled.div`
   padding: 20px 0;
 `;
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export default function Wrapper({ children }: Props) {
+export default function Wrapper({ children }: ChildrenProps) {
   return <MainWrapper>{children}</MainWrapper>;
 }
