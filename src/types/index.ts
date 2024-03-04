@@ -8,4 +8,6 @@ export interface WeatherDataProps {
   minTemp: number;
   name: string;
   country: string;
+  humidity: string;
+  timestamp: string;
 }

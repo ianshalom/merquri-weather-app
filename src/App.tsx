@@ -34,10 +34,17 @@ function App() {
       maxTemp: data.data.main.temp_max,
       minTemp: data.data.main.temp_min,
       name: data.data.name,
+      humidity: data.data.main.humidity,
+      timestamp: new Date().toLocaleString(),
       country: data.data.sys.country,
     };
+
+    console.log("weatherData: ", weatherData);
+
     dispatch(saveSearchResult(weatherData));
   }, [data, dispatch]);
+
+  console.log("DATA: ", data);
 
   return (
     <MainWrapper>

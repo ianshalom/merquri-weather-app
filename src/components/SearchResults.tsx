@@ -16,11 +16,14 @@ export default function SearchResults() {
   );
   console.log(weatherData);
 
-  const { temp, maxTemp, minTemp, name, country } = weatherData;
+  const { temp, maxTemp, minTemp, name, country, timestamp, humidity } =
+    weatherData;
+
+  console.log(timestamp, humidity);
 
   return (
     <WeatherData>
-      <p>Today's Weather</p>
+      <p style={{ fontWeight: "bold" }}>Today's Weather</p>
       <h1>{temp}</h1>
       <p>
         H:{maxTemp} L:{minTemp}
