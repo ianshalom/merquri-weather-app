@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import type { RootState } from "store";
+import { useSelector } from "react-redux";
 
 const WeatherData = styled.div`
   display: flex;
@@ -6,6 +8,10 @@ const WeatherData = styled.div`
 `;
 
 export default function SearchResults() {
+  const weatherData = useSelector(
+    (state: RootState) => state?.searchHistory.weatherData
+  );
+  console.log(weatherData);
   return (
     <WeatherData>
       <p>Today's Weather</p>

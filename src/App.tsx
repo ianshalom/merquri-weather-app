@@ -4,12 +4,13 @@ import MainWrapper from "components/MainWrapper";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import SearchHistory from "components/SearchHistory";
-import { WeatherDataProps } from "types";
+import { useDispatch } from "react-redux";
+import { saveSearchResult } from "store/slices/searchHistorySlice";
 
 function App() {
   const [input, setInput] = useState("");
-  const [searchHistory, setSearchHistory] = useState<WeatherDataProps[]>([]);
 
+  const dispatch = useDispatch();
   // Set input as location keyed in
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -35,10 +36,8 @@ function App() {
       name: data.data.name,
       country: data.data.sys.country,
     };
-    setSearchHistory([...searchHistory, weatherData]);
-  }, [data, setSearchHistory]);
-
-  console.log("searchHistory: ", searchHistory);
+    dispatch(saveSearchResult(weatherData));
+  }, [data, dispatch]);
 
   return (
     <MainWrapper>
