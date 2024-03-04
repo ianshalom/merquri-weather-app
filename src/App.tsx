@@ -1,9 +1,12 @@
+import { useEffect } from "react";
+import { getWeatherData } from "./api";
+
 function App() {
-  return (
-    <>
-      <h1>Weather app</h1>
-    </>
-  );
+  useEffect(() => {
+    const weatherData = getWeatherData();
+    console.log(weatherData);
+  }, []);
+  return <div>Weather app</div>;
 }
 
 export default App;
