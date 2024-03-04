@@ -40,12 +40,11 @@ export default function SearchResults() {
         state.searchHistory.weatherData.length - 1
       ]
   );
-  console.log(weatherData);
+
+  if (!weatherData) return;
 
   const { temp, maxTemp, minTemp, name, country, timestamp, humidity } =
     weatherData;
-
-  console.log(timestamp, humidity);
 
   return (
     <WeatherContainer>
@@ -63,7 +62,7 @@ export default function SearchResults() {
       </WeatherTempContainer>
       <AdditionalInfoContainer>
         <Image src={sunImage} alt="sun" />
-        <GreyText>{timestamp}</GreyText>
+        <GreyText>{timestamp}am</GreyText>
         <GreyText>Humidity: {humidity}%</GreyText>
         <GreyText>Clouds</GreyText>
       </AdditionalInfoContainer>

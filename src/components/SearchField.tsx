@@ -1,6 +1,6 @@
 import { InputField } from "./UI/InputField";
 import styled from "styled-components";
-import { SearchIcon } from "./Icons/SearchIcon";
+import { SearchPrimaryIcon } from "./Icons/SearchPrimaryIcon";
 import { OnChangeHandlerProps } from "./UI/InputField";
 
 const InputFieldWrapper = styled.div`
@@ -20,7 +20,7 @@ export default function SearchField({
     <InputFieldWrapper>
       <InputField onChangeHandler={onChangeHandler} />
       <span onClick={handleClick}>
-        <SearchIcon />
+        <SearchPrimaryIcon />
       </span>
     </InputFieldWrapper>
   );
