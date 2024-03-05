@@ -17,10 +17,15 @@ export const searchHistory = createSlice({
     saveSearchResult: (state, action: PayloadAction<WeatherDataProps>) => {
       state.weatherData = [...state.weatherData, action.payload];
     },
+    removeSearchResult: (state, action: PayloadAction<string>) => {
+      state.weatherData = state.weatherData.filter(
+        (w) => w.id !== action.payload
+      );
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { saveSearchResult } = searchHistory.actions;
+export const { saveSearchResult, removeSearchResult } = searchHistory.actions;
 
 export default searchHistory.reducer;

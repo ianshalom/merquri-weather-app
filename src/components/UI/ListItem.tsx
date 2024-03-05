@@ -31,6 +31,10 @@ const IconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const DeleteIcon = styled(MdDelete)`
@@ -43,7 +47,17 @@ const SearchIcon = styled(IoSearchSharp)`
 
 type ListDataProps = Pick<WeatherDataProps, "timestamp" | "name" | "country">;
 
-export default function ListItem({ timestamp, name, country }: ListDataProps) {
+type HandleClickProps = {
+  removeSearchResult: React.MouseEventHandler<HTMLDivElement>;
+};
+
+type ListItemProps = ListDataProps & HandleClickProps;
+export default function ListItem({
+  timestamp,
+  name,
+  country,
+  removeSearchResult,
+}: ListItemProps) {
   return (
     <ListContainer>
       <Text>
@@ -54,7 +68,7 @@ export default function ListItem({ timestamp, name, country }: ListDataProps) {
         <IconWrapper>
           <SearchIcon />
         </IconWrapper>
-        <IconWrapper>
+        <IconWrapper onClick={removeSearchResult}>
           <DeleteIcon />
         </IconWrapper>
       </IconContainer>
