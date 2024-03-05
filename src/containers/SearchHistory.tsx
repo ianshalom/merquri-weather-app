@@ -31,7 +31,7 @@ const SearchHistoryWrapper = styled.div`
   padding: 20px 10px;
   border-radius: 24px;
   background: #ffffff33;
-  margin-top: 30px;
+  margin-top: 15px;
   overflow-y: scroll;
   height: 500px;
   &::-webkit-scrollbar {
@@ -101,7 +101,7 @@ export default function SearchHistory() {
         ) : (
           <>
             <div style={{ padding: "5px 8px" }}>
-              <Text>Search History</Text>
+              <Text fontWeight="bold">Search History</Text>
             </div>
             {weatherData.map((w) => (
               <ListItem

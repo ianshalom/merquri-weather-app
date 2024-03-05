@@ -55,7 +55,7 @@ export default function SearchResults() {
   return (
     <WeatherContainer>
       <WeatherTempContainer>
-        <Text>Today's Weather</Text>
+        <Text fontWeight="bold">Today's Weather</Text>
         <Text fontSize={isMobile ? "h2" : "h1"} color="purple">
           {!weatherData ? 0 : weatherData.temp}°
         </Text>
@@ -63,7 +63,7 @@ export default function SearchResults() {
           H:{!weatherData ? 0 : weatherData.maxTemp}° L:
           {!weatherData ? 0 : weatherData.minTemp}°
         </Text>
-        <Text color="grey">
+        <Text color="grey" fontWeight="bold">
           {!weatherData ? "" : `${weatherData.name}, ${weatherData.country}`}
         </Text>
       </WeatherTempContainer>
