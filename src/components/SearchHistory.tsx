@@ -35,9 +35,10 @@ export default function SearchHistory() {
         <h1 style={{ textAlign: "center" }}>No Data Found</h1>
       ) : (
         <SearchHistoryWrapper>
-          <p>Search History</p>
+          <p style={{ marginLeft: "4px" }}>Search History</p>
           {weatherData.map((w) => (
             <ListItem
+              key={w.id}
               timestamp={w.timestamp}
               name={w.name}
               country={w.country}

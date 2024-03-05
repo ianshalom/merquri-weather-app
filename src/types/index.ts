@@ -3,6 +3,7 @@ export interface ChildrenProps {
 }
 
 export interface WeatherDataProps {
+  id: string;
   temp: number;
   maxTemp: number;
   minTemp: number;
