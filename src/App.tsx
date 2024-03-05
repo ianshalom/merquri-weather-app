@@ -22,15 +22,24 @@ function App() {
 
   useEffect(() => {
     if (!data) return;
+    const {
+      data: {
+        id,
+        name,
+        sys: { country },
+        main: { temp, temp_max, temp_min, humidity },
+      },
+    } = data;
+
     const weatherData = {
-      id: data.data.id,
-      temp: data.data.main.temp,
-      maxTemp: data.data.main.temp_max,
-      minTemp: data.data.main.temp_min,
-      name: data.data.name,
-      humidity: data.data.main.humidity,
+      id,
+      temp,
+      maxTemp: temp_max,
+      minTemp: temp_min,
+      name,
+      humidity,
       timestamp: new Date().toLocaleString(),
-      country: data.data.sys.country,
+      country,
     };
 
     dispatch(saveSearchResult(weatherData));

@@ -15,7 +15,7 @@ export const searchHistory = createSlice({
   initialState,
   reducers: {
     saveSearchResult: (state, action: PayloadAction<WeatherDataProps>) => {
-      state.weatherData = [...state.weatherData, action.payload];
+      state.weatherData = [action.payload, ...state.weatherData];
     },
     removeSearchResult: (state, action: PayloadAction<string>) => {
       state.weatherData = state.weatherData.filter(

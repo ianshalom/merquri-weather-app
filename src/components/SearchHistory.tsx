@@ -1,9 +1,14 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import SearchResults from "./SearchResults";
 import { useSelector, useDispatch } from "react-redux";
-import { removeSearchResult } from "store/slices/searchHistorySlice";
+import {
+  removeSearchResult,
+  saveSearchResult,
+} from "store/slices/searchHistorySlice";
 import ListItem from "./UI/ListItem";
 import type { RootState } from "store";
+import useGetLocationData from "hooks/useGetLocationData";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -23,17 +28,54 @@ const SearchHistoryWrapper = styled.div`
 `;
 
 export default function SearchHistory() {
+  const [location, setLocation] = useState("");
   const dispatch = useDispatch();
 
   const weatherData = useSelector(
     (state: RootState) => state.searchHistory.weatherData
   );
 
-  console.log("WEATHER DATA; ", weatherData);
+  const { data, refetch } = useGetLocationData(location);
 
   // Remove search result from store
-  const handleRemoveSearchResult = (id: string) =>
+  const handleRemoveSearchResultClick = (id: string) =>
     dispatch(removeSearchResult(id));
+
+  // Hook to fetch location's weather data
+  const handleSearchClick = (location: string) => {
+    setLocation(location);
+  };
+
+  useEffect(() => {
+    if (location) refetch();
+  }, [location, refetch]);
+
+  useEffect(() => {
+    if (!data) return;
+
+    const {
+      data: {
+        id,
+        name,
+        sys: { country },
+        main: { temp, temp_max, temp_min, humidity },
+      },
+    } = data;
+
+    const weatherData = {
+      id,
+      temp,
+      maxTemp: temp_max,
+      minTemp: temp_min,
+      name,
+      humidity,
+      timestamp: new Date().toLocaleString(),
+      country,
+    };
+
+    dispatch(saveSearchResult(weatherData));
+    setLocation("");
+  }, [data, dispatch]);
 
   return (
     <Wrapper>
@@ -49,7 +91,10 @@ export default function SearchHistory() {
               timestamp={w.timestamp}
               name={w.name}
               country={w.country}
-              removeSearchResult={() => handleRemoveSearchResult(w.id)}
+              handleSearchClick={() => handleSearchClick(w.name)}
+              handleRemoveSearchResultClick={() =>
+                handleRemoveSearchResultClick(w.id)
+              }
             />
           ))}
         </SearchHistoryWrapper>

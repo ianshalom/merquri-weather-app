@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 
 // Get location's weather data
 export function getLocationWeatherDataQuery(input: string) {
-  console.log("INPUT: ", input);
   return {
     queryKey: ["weatherData", input],
     queryFn: () => getWeatherData(input),

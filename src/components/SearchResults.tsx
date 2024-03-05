@@ -35,10 +35,7 @@ const GreyText = styled.p<{ $bold?: boolean }>`
 
 export default function SearchResults() {
   const weatherData = useSelector(
-    (state: RootState) =>
-      state.searchHistory.weatherData[
-        state.searchHistory.weatherData.length - 1
-      ]
+    (state: RootState) => state.searchHistory.weatherData[0]
   );
 
   if (!weatherData) return;

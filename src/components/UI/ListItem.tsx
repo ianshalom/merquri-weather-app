@@ -48,7 +48,8 @@ const SearchIcon = styled(IoSearchSharp)`
 type ListDataProps = Pick<WeatherDataProps, "timestamp" | "name" | "country">;
 
 type HandleClickProps = {
-  removeSearchResult: React.MouseEventHandler<HTMLDivElement>;
+  handleRemoveSearchResultClick: React.MouseEventHandler<HTMLDivElement>;
+  handleSearchClick: React.MouseEventHandler<HTMLDivElement>;
 };
 
 type ListItemProps = ListDataProps & HandleClickProps;
@@ -56,7 +57,8 @@ export default function ListItem({
   timestamp,
   name,
   country,
-  removeSearchResult,
+  handleRemoveSearchResultClick,
+  handleSearchClick,
 }: ListItemProps) {
   return (
     <ListContainer>
@@ -65,10 +67,10 @@ export default function ListItem({
       </Text>
       <IconContainer>
         <Text>{timestamp}am</Text>
-        <IconWrapper>
+        <IconWrapper onClick={handleSearchClick}>
           <SearchIcon />
         </IconWrapper>
-        <IconWrapper onClick={removeSearchResult}>
+        <IconWrapper onClick={handleRemoveSearchResultClick}>
           <DeleteIcon />
         </IconWrapper>
       </IconContainer>
