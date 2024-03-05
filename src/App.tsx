@@ -9,6 +9,7 @@ import { WeatherDataProps } from "types";
 
 function App() {
   const [input, setInput] = useState("");
+  const [submitStatus, setSubmitStatus] = useState(false);
 
   const dispatch = useDispatch();
   // Set input as location keyed in
@@ -18,14 +19,17 @@ function App() {
 
   // Add click event handler and submit request to fetch data
   const handleClick = () => {
-    console.log("REFETCHING...");
     refetch();
+    setSubmitStatus(true);
   };
 
   const { data, isError, refetch } = useGetLocationData(input);
 
   useEffect(() => {
+    // Add handler to prevent react query from serving cached data
+    if (!submitStatus) return;
     if (!data) return;
+
     const {
       data: {
         id,
@@ -46,12 +50,10 @@ function App() {
       timestamp: new Date().toLocaleString(),
       country,
     } as WeatherDataProps;
-
     dispatch(saveSearchResult(weatherData));
     setInput("");
-  }, [data, dispatch]);
-
-  console.log(data);
+    setSubmitStatus(false);
+  }, [data, dispatch, submitStatus]);
 
   return (
     <MainWrapper>

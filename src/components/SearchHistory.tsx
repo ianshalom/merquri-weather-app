@@ -96,7 +96,7 @@ export default function SearchHistory() {
               country={w.country}
               handleSearchClick={() => handleSearchClick(w.name)}
               handleRemoveSearchResultClick={() =>
-                handleRemoveSearchResultClick(w.countryId)
+                handleRemoveSearchResultClick(w.id)
               }
             />
           ))}
