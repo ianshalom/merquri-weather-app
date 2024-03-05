@@ -15,10 +15,11 @@ body {
     line-height: 1.7;
     height: 100vh;
     background: url(${backgroundLight});
-    background-size: cover;
+    background-size: stretch;
     background-position: top;
     background-repeat: no-repeat;
-
+    display: flex;
+    justify-content:center;
 }
 
 `;

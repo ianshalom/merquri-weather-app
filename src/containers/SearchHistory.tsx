@@ -18,6 +18,10 @@ const Wrapper = styled.div`
   background: #ffffff33;
   margin-top: 100px;
   padding: 30px 40px;
+
+  @media (max-width: 600px) {
+    padding: 20px 25px;
+  }
 `;
 
 const SearchHistoryWrapper = styled.div`

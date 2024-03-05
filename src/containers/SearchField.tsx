@@ -5,6 +5,7 @@ import ButtonPrimary from "../components/ButtonPrimary";
 const InputFieldWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;
 
 interface HandleClickProps extends OnChangeHandlerProps {

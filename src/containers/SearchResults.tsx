@@ -19,6 +19,12 @@ const AdditionalInfoContainer = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   width: 100%;
+
+  @media (max-width: 600px) {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 `;
 
 const Image = styled.img`
@@ -27,6 +33,13 @@ const Image = styled.img`
   position: absolute;
   top: -150px;
   left: 280px;
+
+  @media (max-width: 600px) {
+    top: -90px;
+    left: 150px;
+    height: 180px;
+    width: 180px;
+  }
 `;
 
 const GreyText = styled.p<{ $bold?: boolean }>`

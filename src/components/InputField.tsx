@@ -6,7 +6,8 @@ const StyledInputField = styled.input`
   padding: 15px 20px;
   font-size: inherit;
   border: none;
-  width: 600px;
+  width: 100%;
+  margin-right: 20px;
   height: 60px;
 `;
 export interface OnChangeHandlerProps {
