@@ -1,11 +1,10 @@
-import { getWeatherData } from "api";
 import SearchField from "components/SearchField";
 import MainWrapper from "components/MainWrapper";
-import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import SearchHistory from "components/SearchHistory";
 import { useDispatch } from "react-redux";
 import { saveSearchResult } from "store/slices/searchHistorySlice";
+import useGetLocationData from "hooks/useGetLocationData";
 
 function App() {
   const [input, setInput] = useState("");
@@ -19,12 +18,7 @@ function App() {
   // Add click event handler and submit request to fetch data
   const handleClick = () => refetch();
 
-  const { data, isError, refetch } = useQuery({
-    queryKey: ["weatherData", input],
-    queryFn: () => getWeatherData(input),
-    retry: 1,
-    enabled: false,
-  });
+  const { data, isError, refetch } = useGetLocationData(input);
 
   useEffect(() => {
     if (!data) return;
@@ -39,13 +33,9 @@ function App() {
       country: data.data.sys.country,
     };
 
-    console.log("weatherData: ", weatherData);
-
     dispatch(saveSearchResult(weatherData));
     setInput("");
   }, [data, dispatch]);
-
-  console.log("DATA: ", data);
 
   return (
     <MainWrapper>

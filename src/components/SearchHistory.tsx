@@ -31,6 +31,7 @@ export default function SearchHistory() {
 
   console.log("WEATHER DATA; ", weatherData);
 
+  // Remove search result from store
   const handleRemoveSearchResult = (id: string) =>
     dispatch(removeSearchResult(id));
 
