@@ -38,29 +38,27 @@ export default function SearchResults() {
     (state: RootState) => state.searchHistory.weatherData[0]
   );
 
-  if (!weatherData) return;
-
-  const { temp, maxTemp, minTemp, name, country, timestamp, humidity } =
-    weatherData;
-
   return (
     <WeatherContainer>
       <WeatherTempContainer>
         <p style={{ fontWeight: "bold" }}>Today's Weather</p>
         <p style={{ fontSize: "80px", fontWeight: "bold", color: "#6C40B5" }}>
-          {temp}°
+          {!weatherData ? 0 : weatherData.temp}°
         </p>
         <p>
-          H:{maxTemp}° L:{minTemp}°
+          H:{!weatherData ? 0 : weatherData.maxTemp}° L:
+          {!weatherData ? 0 : weatherData.minTemp}°
         </p>
         <GreyText $bold>
-          {name}, {country}
+          {!weatherData ? "" : `${weatherData.name}, ${weatherData.country}`}
         </GreyText>
       </WeatherTempContainer>
       <AdditionalInfoContainer>
         <Image src={sunImage} alt="sun" />
-        <GreyText>{timestamp}am</GreyText>
-        <GreyText>Humidity: {humidity}%</GreyText>
+        <GreyText>{!weatherData ? "" : weatherData.timestamp}am</GreyText>
+        <GreyText>
+          Humidity: {!weatherData ? "" : weatherData.humidity}%
+        </GreyText>
         <GreyText>Clouds</GreyText>
       </AdditionalInfoContainer>
     </WeatherContainer>

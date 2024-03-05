@@ -87,25 +87,27 @@ export default function SearchHistory() {
   return (
     <Wrapper>
       <SearchResults />
-      {!weatherData?.length ? (
-        <h1 style={{ textAlign: "center" }}>No Data Found</h1>
-      ) : (
-        <SearchHistoryWrapper>
-          <p style={{ marginLeft: "4px" }}>Search History</p>
-          {weatherData.map((w) => (
-            <ListItem
-              key={w.id}
-              timestamp={w.timestamp}
-              name={w.name}
-              country={w.country}
-              handleSearchClick={() => handleSearchClick(w.name)}
-              handleRemoveSearchResultClick={() =>
-                handleRemoveSearchResultClick(w.id)
-              }
-            />
-          ))}
-        </SearchHistoryWrapper>
-      )}
+      <SearchHistoryWrapper>
+        {!weatherData?.length ? (
+          <h1 style={{ textAlign: "center" }}>No Data Found</h1>
+        ) : (
+          <>
+            <p style={{ marginLeft: "4px" }}>Search History</p>
+            {weatherData.map((w) => (
+              <ListItem
+                key={w.id}
+                timestamp={w.timestamp}
+                name={w.name}
+                country={w.country}
+                handleSearchClick={() => handleSearchClick(w.name)}
+                handleRemoveSearchResultClick={() =>
+                  handleRemoveSearchResultClick(w.id)
+                }
+              />
+            ))}
+          </>
+        )}
+      </SearchHistoryWrapper>
     </Wrapper>
   );
 }
