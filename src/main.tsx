@@ -8,15 +8,17 @@ import { Provider } from "react-redux";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "styled-components";
 
-import { theme } from "theme/index.ts";
+import { theme, lightTheme, darkTheme } from "theme/index.ts";
 
 const queryClient = new QueryClient();
+
+const themeObject = { ...theme, ...lightTheme };
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={themeObject}>
           <GlobalStyle />
           <App />
           <ReactQueryDevtools initialIsOpen={false} />

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import backgroundLight from "./assets/bg-light.png";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -14,12 +13,13 @@ body {
     font-size: 16px;
     line-height: 1.7;
     height: 100vh;
-    background: url(${backgroundLight});
+    background: url(${({ theme }) => theme.background.backgroundImage});
     background-size: stretch;
     background-position: top;
     background-repeat: no-repeat;
     display: flex;
     justify-content:center;
+    color: ${({ theme }) => theme.colors.primary.default}
 }
 
 `;

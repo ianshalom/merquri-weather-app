@@ -9,7 +9,7 @@ interface TextProps {
 
 const StyledText = styled.p<TextProps>`
   ${({ theme, color, fontSize, fontWeight }) => `
-    color: ${color ? theme.colors.primary[color] : theme.colors.black};
+    color: ${color ? theme.colors.primary[color] : theme.colors.secondary};
     font-weight: ${fontWeight ? theme.fontWeight[fontWeight] : 0};
     font-size: ${fontSize ? theme.fontSize[fontSize] : theme.fontSize.title}
     };
