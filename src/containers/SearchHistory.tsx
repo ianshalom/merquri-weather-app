@@ -10,6 +10,7 @@ import ListItem from "../components/ListItem";
 import type { RootState } from "store";
 import useGetLocationData from "hooks/useGetLocationData";
 import { WeatherDataProps } from "types";
+import Text from "components/UI/Text";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -96,7 +97,7 @@ export default function SearchHistory() {
           <h1 style={{ textAlign: "center" }}>No Data Found</h1>
         ) : (
           <>
-            <p style={{ marginLeft: "4px" }}>Search History</p>
+            <Text>Search History</Text>
             {weatherData.map((w) => (
               <ListItem
                 key={w.id}

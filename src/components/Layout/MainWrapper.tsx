@@ -9,7 +9,7 @@ const MainWrapper = styled.div`
   padding: 20px 0;
 
   @media (max-width: 600px) {
-    max-width: 400px;
+    width: 400px;
     padding: 20px;
   }
 `;

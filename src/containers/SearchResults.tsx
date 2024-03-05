@@ -3,6 +3,7 @@ import type { RootState } from "store";
 import { useSelector } from "react-redux";
 import sunImage from "assets/sun.png";
 import formatTime from "utils/getTimeOfDay";
+import Text from "components/UI/Text";
 
 const WeatherContainer = styled.div`
   display: flex;
@@ -12,6 +13,7 @@ const WeatherContainer = styled.div`
 const WeatherTempContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 200px;
 `;
 
 const AdditionalInfoContainer = styled.div`
@@ -42,11 +44,6 @@ const Image = styled.img`
   }
 `;
 
-const GreyText = styled.p<{ $bold?: boolean }>`
-  color: #666666;
-  font-weight: ${(props) => (props.$bold ? "bold" : "none")};
-`;
-
 export default function SearchResults() {
   const weatherData = useSelector(
     (state: RootState) => state.searchHistory.weatherData[0]
@@ -55,27 +52,27 @@ export default function SearchResults() {
   return (
     <WeatherContainer>
       <WeatherTempContainer>
-        <p style={{ fontWeight: "bold" }}>Today's Weather</p>
-        <p style={{ fontSize: "80px", fontWeight: "bold", color: "#6C40B5" }}>
+        <Text>Today's Weather</Text>
+        <Text fontSize="h1" color="purple">
           {!weatherData ? 0 : weatherData.temp}°
-        </p>
-        <p>
+        </Text>
+        <Text>
           H:{!weatherData ? 0 : weatherData.maxTemp}° L:
           {!weatherData ? 0 : weatherData.minTemp}°
-        </p>
-        <GreyText $bold>
+        </Text>
+        <Text color="grey">
           {!weatherData ? "" : `${weatherData.name}, ${weatherData.country}`}
-        </GreyText>
+        </Text>
       </WeatherTempContainer>
       <AdditionalInfoContainer>
         <Image src={sunImage} alt="sun" />
-        <GreyText>
+        <Text color="grey">
           {!weatherData ? "" : formatTime(weatherData.timestamp)}
-        </GreyText>
-        <GreyText>
+        </Text>
+        <Text color="grey">
           Humidity: {!weatherData ? "" : weatherData.humidity}%
-        </GreyText>
-        <GreyText>Clouds</GreyText>
+        </Text>
+        <Text color="grey">Clouds</Text>
       </AdditionalInfoContainer>
     </WeatherContainer>
   );
