@@ -2,6 +2,7 @@ import styled from "styled-components";
 import type { RootState } from "store";
 import { useSelector } from "react-redux";
 import sunImage from "assets/sun.png";
+import formatTime from "utils/getTimeOfDay";
 
 const WeatherContainer = styled.div`
   display: flex;
@@ -55,7 +56,9 @@ export default function SearchResults() {
       </WeatherTempContainer>
       <AdditionalInfoContainer>
         <Image src={sunImage} alt="sun" />
-        <GreyText>{!weatherData ? "" : weatherData.timestamp}am</GreyText>
+        <GreyText>
+          {!weatherData ? "" : formatTime(weatherData.timestamp)}
+        </GreyText>
         <GreyText>
           Humidity: {!weatherData ? "" : weatherData.humidity}%
         </GreyText>

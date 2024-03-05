@@ -2,6 +2,8 @@ import styled from "styled-components";
 import type { WeatherDataProps } from "types";
 import { MdDelete } from "react-icons/md";
 import { IoSearchSharp } from "react-icons/io5";
+import formatTime from "utils/getTimeOfDay";
+
 const ListContainer = styled.div`
   width: 100%;
   display: flex;
@@ -66,7 +68,7 @@ export default function ListItem({
         {name}, {country}
       </Text>
       <IconContainer>
-        <Text>{timestamp}am</Text>
+        <Text>{formatTime(timestamp)}</Text>
         <IconWrapper onClick={handleSearchClick}>
           <SearchIcon />
         </IconWrapper>
