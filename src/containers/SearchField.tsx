@@ -1,8 +1,7 @@
-import { InputField } from "./UI/InputField";
+import { InputField } from "../components/InputField";
 import styled from "styled-components";
-import { SearchIcon } from "./Icons/Search";
-import { OnChangeHandlerProps } from "./UI/InputField";
-
+import { OnChangeHandlerProps } from "../components/InputField";
+import ButtonPrimary from "../components/ButtonPrimary";
 const InputFieldWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -20,9 +19,7 @@ export default function SearchField({
   return (
     <InputFieldWrapper>
       <InputField onChangeHandler={onChangeHandler} value={value} />
-      <span onClick={handleClick}>
-        <SearchIcon />
-      </span>
+      <ButtonPrimary onClick={handleClick} />
     </InputFieldWrapper>
   );
 }

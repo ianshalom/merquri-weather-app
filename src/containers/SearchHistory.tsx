@@ -6,7 +6,7 @@ import {
   removeSearchResult,
   saveSearchResult,
 } from "store/slices/searchHistorySlice";
-import ListItem from "./UI/ListItem";
+import ListItem from "../components/ListItem";
 import type { RootState } from "store";
 import useGetLocationData from "hooks/useGetLocationData";
 import { WeatherDataProps } from "types";
