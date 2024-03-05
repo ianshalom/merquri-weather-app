@@ -5,6 +5,7 @@ import SearchHistory from "components/SearchHistory";
 import { useDispatch } from "react-redux";
 import { saveSearchResult } from "store/slices/searchHistorySlice";
 import useGetLocationData from "hooks/useGetLocationData";
+import { WeatherDataProps } from "types";
 
 function App() {
   const [input, setInput] = useState("");
@@ -16,7 +17,10 @@ function App() {
   };
 
   // Add click event handler and submit request to fetch data
-  const handleClick = () => refetch();
+  const handleClick = () => {
+    console.log("REFETCHING...");
+    refetch();
+  };
 
   const { data, isError, refetch } = useGetLocationData(input);
 
@@ -32,7 +36,8 @@ function App() {
     } = data;
 
     const weatherData = {
-      id,
+      id: crypto.randomUUID(),
+      countryId: id,
       temp,
       maxTemp: temp_max,
       minTemp: temp_min,
@@ -40,11 +45,13 @@ function App() {
       humidity,
       timestamp: new Date().toLocaleString(),
       country,
-    };
+    } as WeatherDataProps;
 
     dispatch(saveSearchResult(weatherData));
     setInput("");
   }, [data, dispatch]);
+
+  console.log(data);
 
   return (
     <MainWrapper>

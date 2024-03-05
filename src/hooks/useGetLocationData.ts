@@ -6,7 +6,6 @@ export function getLocationWeatherDataQuery(input: string) {
   return {
     queryKey: ["weatherData", input],
     queryFn: () => getWeatherData(input),
-    retry: 1,
     enabled: false,
   };
 }

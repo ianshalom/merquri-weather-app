@@ -9,6 +9,7 @@ import {
 import ListItem from "./UI/ListItem";
 import type { RootState } from "store";
 import useGetLocationData from "hooks/useGetLocationData";
+import { WeatherDataProps } from "types";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -17,6 +18,7 @@ const Wrapper = styled.div`
   background: #ffffff33;
   margin-top: 100px;
   padding: 30px 40px;
+  height: 800px;
 `;
 
 const SearchHistoryWrapper = styled.div`
@@ -63,7 +65,8 @@ export default function SearchHistory() {
     } = data;
 
     const weatherData = {
-      id,
+      id: crypto.randomUUID(),
+      countryId: id,
       temp,
       maxTemp: temp_max,
       minTemp: temp_min,
@@ -71,7 +74,7 @@ export default function SearchHistory() {
       humidity,
       timestamp: new Date().toLocaleString(),
       country,
-    };
+    } as WeatherDataProps;
 
     dispatch(saveSearchResult(weatherData));
     setLocation("");
@@ -93,7 +96,7 @@ export default function SearchHistory() {
               country={w.country}
               handleSearchClick={() => handleSearchClick(w.name)}
               handleRemoveSearchResultClick={() =>
-                handleRemoveSearchResultClick(w.id)
+                handleRemoveSearchResultClick(w.countryId)
               }
             />
           ))}
