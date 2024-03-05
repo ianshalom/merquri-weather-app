@@ -15,8 +15,8 @@ import Text from "components/UI/Text";
 const Wrapper = styled.div`
   width: 100%;
   border-radius: 40px;
-  border: 1px solid #ffffff80;
-  background: #ffffff33;
+  border: 1px solid ${({ theme }) => theme.background.primary};
+  background: ${({ theme }) => theme.background.primary};
   margin-top: 150px;
   padding: 30px 40px;
 
@@ -30,7 +30,7 @@ const SearchHistoryWrapper = styled.div`
   width: 100%;
   padding: 20px 10px;
   border-radius: 24px;
-  background: #ffffff33;
+  background: ${({ theme }) => theme.background.primary};
   margin-top: 15px;
   overflow-y: scroll;
   height: 500px;

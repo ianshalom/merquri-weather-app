@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledInputField = styled.input`
-  background: #ffffff33;
+  background: ${({ theme }) => theme.background.primary};
   border-radius: 20px;
   padding: 15px 20px;
   font-size: inherit;
