@@ -34,8 +34,8 @@ const AdditionalInfoContainer = styled.div`
 `;
 
 const Image = styled.img`
-  height: 350px;
-  width: 350px;
+  height: 310px;
+  width: 310px;
   position: absolute;
   top: -150px;
   left: 280px;

@@ -1,7 +1,6 @@
 import { useEffect, useState, createContext } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle.jsx";
-
 import Home from "pages/Home";
 import { theme, lightTheme, darkTheme } from "theme/index.ts";
 
@@ -24,8 +23,7 @@ export default function App() {
     <ThemeContext.Provider value={isDarkTheme}>
       <ThemeProvider theme={themeMode}>
         <GlobalStyle />
-        <button onClick={toggleTheme}>Toggle theme</button>
-        <Home />
+        <Home onClick={toggleTheme} isDarkMode={isDarkTheme} />
       </ThemeProvider>
     </ThemeContext.Provider>
   );

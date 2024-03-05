@@ -8,8 +8,15 @@ import useGetLocationData from "hooks/useGetLocationData";
 import { WeatherDataProps } from "types";
 import Text from "components/UI/Text";
 import Spinner from "components/Spinner";
+import ToggleButton from "components/ToggleButton.js";
 
-function Home() {
+function Home({
+  onClick,
+  isDarkMode,
+}: {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  isDarkMode: boolean;
+}) {
   const [input, setInput] = useState("");
   const [submitStatus, setSubmitStatus] = useState(false);
 
@@ -59,6 +66,9 @@ function Home() {
 
   return (
     <MainWrapper>
+      <ToggleButton onClick={onClick} isDarkMode={isDarkMode}>
+        Toggle theme
+      </ToggleButton>
       <SearchField
         onChangeHandler={onChangeHandler}
         handleClick={handleClick}
