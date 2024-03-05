@@ -17,17 +17,18 @@ const Wrapper = styled.div`
   border-radius: 40px;
   border: 1px solid #ffffff80;
   background: #ffffff33;
-  margin-top: 100px;
+  margin-top: 150px;
   padding: 30px 40px;
 
   @media (max-width: 600px) {
-    padding: 20px 25px;
+    padding: 25px 20px;
+    margin-top: 100px;
   }
 `;
 
 const SearchHistoryWrapper = styled.div`
   width: 100%;
-  padding: 20px;
+  padding: 20px 10px;
   border-radius: 24px;
   background: #ffffff33;
   margin-top: 30px;
@@ -94,10 +95,14 @@ export default function SearchHistory() {
       <SearchResults />
       <SearchHistoryWrapper>
         {!weatherData?.length ? (
-          <h1 style={{ textAlign: "center" }}>No Data Found</h1>
+          <div style={{ textAlign: "center" }}>
+            <Text fontSize="h3">No Data Found</Text>
+          </div>
         ) : (
           <>
-            <Text>Search History</Text>
+            <div style={{ padding: "5px 8px" }}>
+              <Text>Search History</Text>
+            </div>
             {weatherData.map((w) => (
               <ListItem
                 key={w.id}

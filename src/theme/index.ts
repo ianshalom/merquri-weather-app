@@ -11,10 +11,12 @@ export const theme = {
     primary: "#ffffff33",
   },
   fontSize: {
-    h1: "70px",
-    title: "1em",
-    body: "0.875em",
-    caption: "0.625em",
+    h1: "60px",
+    h2: "45px",
+    h3: "30px",
+    title: "1em", // 16px
+    body: "0.875em", // 14px
+    caption: "0.625em", // 10px
   },
   fontWeight: {
     light: 300,

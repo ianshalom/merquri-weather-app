@@ -21,7 +21,6 @@ export default function Text({
   color,
   fontWeight,
 }: TextProps) {
-  console.log(fontWeight, fontSize);
   return (
     <StyledText color={color} fontSize={fontSize} fontWeight={fontWeight}>
       {children}

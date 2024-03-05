@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import sunImage from "assets/sun.png";
 import formatTime from "utils/getTimeOfDay";
 import Text from "components/UI/Text";
+import { useMediaQuery } from "usehooks-ts";
 
 const WeatherContainer = styled.div`
   display: flex;
@@ -25,7 +26,7 @@ const AdditionalInfoContainer = styled.div`
   @media (max-width: 600px) {
     flex-direction: column-reverse;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-end;
   }
 `;
 
@@ -45,6 +46,8 @@ const Image = styled.img`
 `;
 
 export default function SearchResults() {
+  const isMobile = useMediaQuery("(max-width: 600px");
+
   const weatherData = useSelector(
     (state: RootState) => state.searchHistory.weatherData[0]
   );
@@ -53,7 +56,7 @@ export default function SearchResults() {
     <WeatherContainer>
       <WeatherTempContainer>
         <Text>Today's Weather</Text>
-        <Text fontSize="h1" color="purple">
+        <Text fontSize={isMobile ? "h2" : "h1"} color="purple">
           {!weatherData ? 0 : weatherData.temp}°
         </Text>
         <Text>
@@ -70,7 +73,7 @@ export default function SearchResults() {
           {!weatherData ? "" : formatTime(weatherData.timestamp)}
         </Text>
         <Text color="grey">
-          Humidity: {!weatherData ? "" : weatherData.humidity}%
+          Humidity: {!weatherData ? 0 : weatherData.humidity}%
         </Text>
         <Text color="grey">Clouds</Text>
       </AdditionalInfoContainer>

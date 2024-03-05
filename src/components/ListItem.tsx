@@ -3,6 +3,8 @@ import type { WeatherDataProps } from "types";
 import { MdDelete } from "react-icons/md";
 import { IoSearchSharp } from "react-icons/io5";
 import formatTime from "utils/getTimeOfDay";
+import { useMediaQuery } from "usehooks-ts";
+import Text from "components/UI/Text";
 
 const ListContainer = styled.div`
   width: 100%;
@@ -18,10 +20,6 @@ const ListContainer = styled.div`
 const IconContainer = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const Text = styled.p`
-  font-size: 0.875em;
 `;
 
 const IconWrapper = styled.div`
@@ -62,13 +60,31 @@ export default function ListItem({
   handleRemoveSearchResultClick,
   handleSearchClick,
 }: ListItemProps) {
+  const isMobile = useMediaQuery("(max-width: 600px");
+
   return (
     <ListContainer>
-      <Text>
-        {name}, {country}
-      </Text>
+      {isMobile ? (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <Text fontSize={isMobile ? "body" : "title"}>
+            {name}, {country}
+          </Text>
+          <Text fontSize={isMobile ? "caption" : "title"}>
+            {formatTime(timestamp)}
+          </Text>
+        </div>
+      ) : (
+        <Text fontSize={isMobile ? "body" : "title"}>
+          {name}, {country}
+        </Text>
+      )}
+
       <IconContainer>
-        <Text>{formatTime(timestamp)}</Text>
+        {isMobile ? null : (
+          <Text fontSize={isMobile ? "body" : "title"}>
+            {formatTime(timestamp)}
+          </Text>
+        )}
         <IconWrapper onClick={handleSearchClick}>
           <SearchIcon />
         </IconWrapper>
