@@ -11,6 +11,7 @@ import { ThemeContext } from "App";
 const WeatherContainer = styled.div`
   display: flex;
   position: relative;
+  background: ;
 `;
 
 const WeatherTempContainer = styled.div`
@@ -55,6 +56,8 @@ export default function SearchResults() {
     (state: RootState) => state.searchHistory.weatherData[0]
   );
 
+  const themeColor = isDarkTheme ? "default" : "grey";
+
   return (
     <WeatherContainer>
       <WeatherTempContainer>
@@ -62,6 +65,7 @@ export default function SearchResults() {
         <Text
           fontSize={isMobile ? "h2" : "h1"}
           color={isDarkTheme ? "default" : "purple"}
+          fontWeight="bold"
         >
           {!weatherData ? 0 : weatherData.temp}°
         </Text>
@@ -69,19 +73,19 @@ export default function SearchResults() {
           H:{!weatherData ? 0 : weatherData.maxTemp}° L:
           {!weatherData ? 0 : weatherData.minTemp}°
         </Text>
-        <Text color="grey" fontWeight="bold">
+        <Text color={themeColor} fontWeight="bold">
           {!weatherData ? "" : `${weatherData.name}, ${weatherData.country}`}
         </Text>
       </WeatherTempContainer>
       <AdditionalInfoContainer>
         <Image src={sunImage} alt="sun" />
-        <Text color="grey">
+        <Text color={themeColor}>
           {!weatherData ? "" : formatTime(weatherData.timestamp)}
         </Text>
-        <Text color="grey">
+        <Text color={themeColor}>
           Humidity: {!weatherData ? 0 : weatherData.humidity}%
         </Text>
-        <Text color="grey">Clouds</Text>
+        <Text color={themeColor}>Clouds</Text>
       </AdditionalInfoContainer>
     </WeatherContainer>
   );

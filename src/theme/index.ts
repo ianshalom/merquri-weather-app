@@ -42,7 +42,8 @@ export const darkTheme = {
     },
   },
   background: {
-    primary: "#ffffff33",
+    primary: "#1A1A1A4D",
+    secondary: "#1A1A1A80",
     backgroundImage: backgroundDarkImage,
   },
 };
