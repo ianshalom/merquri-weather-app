@@ -1,4 +1,4 @@
-export const SearchIcon = () => (
+export const SearchIcon = ({ color }: { color: string }) => (
   <svg
     width="60"
     height="60"
@@ -7,7 +7,7 @@ export const SearchIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
-    <rect width="60" height="60" rx="20" fill="#6C40B5" />
+    <rect width="60" height="60" rx="20" fill={color} />
     <mask
       id="mask0_2_313"
       style={{ maskType: "alpha" }}

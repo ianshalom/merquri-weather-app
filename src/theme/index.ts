@@ -38,7 +38,7 @@ export const darkTheme = {
       default: "#FFFFFF",
       secondary: "#000000",
       grey: "#666666",
-      purple: "#6C40B5",
+      purple: "#28124D",
     },
   },
   background: {

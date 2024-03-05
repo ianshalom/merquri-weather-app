@@ -5,6 +5,8 @@ import sunImage from "assets/sun.png";
 import formatTime from "utils/getTimeOfDay";
 import Text from "components/UI/Text";
 import { useMediaQuery } from "usehooks-ts";
+import { useContext } from "react";
+import { ThemeContext } from "App";
 
 const WeatherContainer = styled.div`
   display: flex;
@@ -46,6 +48,7 @@ const Image = styled.img`
 `;
 
 export default function SearchResults() {
+  const isDarkTheme = useContext(ThemeContext);
   const isMobile = useMediaQuery("(max-width: 600px");
 
   const weatherData = useSelector(
@@ -56,7 +59,10 @@ export default function SearchResults() {
     <WeatherContainer>
       <WeatherTempContainer>
         <Text fontWeight="bold">Today's Weather</Text>
-        <Text fontSize={isMobile ? "h2" : "h1"} color="purple">
+        <Text
+          fontSize={isMobile ? "h2" : "h1"}
+          color={isDarkTheme ? "default" : "purple"}
+        >
           {!weatherData ? 0 : weatherData.temp}°
         </Text>
         <Text>
