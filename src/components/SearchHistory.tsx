@@ -18,7 +18,6 @@ const Wrapper = styled.div`
   background: #ffffff33;
   margin-top: 100px;
   padding: 30px 40px;
-  height: 800px;
 `;
 
 const SearchHistoryWrapper = styled.div`
@@ -27,6 +26,11 @@ const SearchHistoryWrapper = styled.div`
   border-radius: 24px;
   background: #ffffff33;
   margin-top: 30px;
+  overflow-y: scroll;
+  height: 500px;
+  &::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
 `;
 
 export default function SearchHistory() {
