@@ -22,6 +22,7 @@ export const lightTheme = {
     primary: {
       default: "#000000",
       secondary: "#FFFFFF",
+      danger: "#C70039",
       grey: "#666666",
       purple: "#6C40B5",
     },
@@ -37,7 +38,8 @@ export const darkTheme = {
     primary: {
       default: "#FFFFFF",
       secondary: "#000000",
-      grey: "#666666",
+      danger: "#C70039",
+      grey: "#FFFFFF80",
       purple: "#28124D",
     },
   },

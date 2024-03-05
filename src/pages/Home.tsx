@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { saveSearchResult } from "store/slices/searchHistorySlice";
 import useGetLocationData from "hooks/useGetLocationData";
 import { WeatherDataProps } from "types";
+import Text from "components/UI/Text";
+import Spinner from "components/Spinner";
 
 function Home() {
   const [input, setInput] = useState("");
@@ -23,7 +25,7 @@ function Home() {
     setSubmitStatus(true);
   };
 
-  const { data, isError, refetch } = useGetLocationData(input);
+  const { data, isError, refetch, isFetching } = useGetLocationData(input);
 
   useEffect(() => {
     // Add handler to prevent react query from serving cached data
@@ -62,7 +64,10 @@ function Home() {
         handleClick={handleClick}
         value={input}
       />
-      {isError && <p>No weather data found for {input}....</p>}
+      {isFetching && <Spinner />}
+      {isError && (
+        <Text color="danger">No weather data found for {input}....</Text>
+      )}
       <SearchHistory />
     </MainWrapper>
   );

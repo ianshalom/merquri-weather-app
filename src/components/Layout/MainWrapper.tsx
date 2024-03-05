@@ -4,7 +4,6 @@ import { ChildrenProps } from "types";
 const MainWrapper = styled.div`
   width: 700px;
   display: flex;
-  align-items: center;
   flex-direction: column;
   padding: 20px 0;
 
