@@ -9,6 +9,7 @@ const StyledInputField = styled.input`
   width: 100%;
   margin-right: 20px;
   height: 60px;
+  color: ${({ theme }) => theme.colors.primary.default};
 `;
 export interface OnChangeHandlerProps {
   onChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
